@@ -10,7 +10,7 @@ I chose to use MS Excel for the purpose of trying my hand out on data cleaning w
 
 ## Data Sources
 
-The dataset was made available by the challenge moderators on Telegram and Whatsapp; it was originally sourced by scrapping data from [sofifa.com](https://www.sofifa.com) which is readily and publicly available.
+The dataset was made available by the challenge moderators on Telegram and Whatsapp; it was originally sourced (on [Kaggle](https://www.kaggle.com/datasets/yagunnersya/fifa-21-messy-raw-dataset-for-cleaning-exploring)) by scrapping data from [sofifa.com](https://www.sofifa.com) which is readily and publicly available.
 
 ## Data Cleaning Process
 
