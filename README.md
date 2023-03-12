@@ -22,7 +22,7 @@ The data cleaning process involved the following steps:
 	
 Before Character Encoding Change | After Character Encoding Change
 :-----------------------:|:--------------:
-![](import.png) |![](import2.png)
+![](import.png) |![](import&#32;2.png)
     
 2.  **Data Cleaning:** Once the issues were identified, the data was cleaned. This involved a combination of manual and automated processes. For example, inconsistent columns were standardised, columns with the star symbols were cleaned to make them integers and processing ready, values were converted from their short forms (M and K) to their full form which was in thousands and millions.
     
