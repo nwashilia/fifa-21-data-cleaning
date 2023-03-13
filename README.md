@@ -4,7 +4,7 @@
 
 ## Overview
 
-This document outlines the data cleaning process for the FIFA '21 🎮 dataset. This dataset was provided as part of the #datacleaningchallenge hosted by the amazing duo of Chinonso ([@PromiseNonso_](https://twitter.com/PromiseNonso_)) and V. Somadina ([@VicSomadina](https://twitter.com/VicSomadina)) as a means of pushing data enthusiasts into new territory in data cleaning and analysis while giving a somewhat, real-life experience that is different from the "classroom" experience. The goal of this process is to ensure that the dataset is accurate, complete, consistent and ready for analysis.
+This document outlines the data cleaning process for the FIFA '21 🎮 dataset. This dataset was provided as part of the #DataCleaningChallenge hosted by the amazing duo of Chinonso ([@PromiseNonso_](https://twitter.com/PromiseNonso_)) and V. Somadina ([@VicSomadina](https://twitter.com/VicSomadina)) as a means of pushing data enthusiasts into new territory in data cleaning and analysis while giving a somewhat, real-life experience that is different from the "classroom" experience. The goal of this process is to ensure that the dataset is accurate, complete, consistent and ready for analysis.
 
 I chose to use MS Excel for the purpose of trying my hand out on data cleaning with this software. It was an awesome experience. 😁
 
@@ -100,6 +100,7 @@ Inserting a column between the P and Q (which makes the present Q into R) column
 A similar process to that of height, listed above, was carried out on weight to make it analysis ready.
 
 ### Value
+
 After removing all the Euro symbols using a **Find and Replace**,I filtered the column for "M". I then used **Find and Replace** on the Value column to remove the M which indicated the value was in millions then multiplied the resultant number by 1000000 to get the actual value and I stored that in a new column.
 
 ![](value&#32;2.png)
@@ -109,6 +110,57 @@ After removing all the Euro symbols using a **Find and Replace**,I filtered the 
 I applied the same method on the thousands by search for **K**. Then applying  similar formula as used to merge the height columns, I merged the value columns. This was followed by deleting the extra columns gotten from these steps after replace **weight** with he new and standardised **Weight (kg)**.
 
 Same procedure was carried out on the **Wage** and **Release clause** columns to standardise them; "Wash, rinse, dry."
+
+### ...And Some Unpivoting
+
+So, after a veeery long time of staring at the dataset and a night with less than optimal rest, I woke up to realise that the "something more" I could do with my data was put the **Positions** columns in a tidier and more "_relatable_" manner.
+
+Firstly, I needed to convert the data to tables so as to ease the following measures we would need to execute. After converting it to a table (I called **data**), I opened _Power Query_ on the table via **Get & Transform Data > From Table/Range**.
+![](positions_split_alt_1.png)
+
+#### Creating the Positions Table
+This opens up _Power Query _ with the **data** table's content. Select the **ID**, **Position1**, **Position2** and **Position3** columns and select **Remove other Columns** so that only the selected columns are left behind.
+![](positions_split_alt_2.png)
+
+Selecting the **ID** column, "**Unpivot Other Columns**" so as to bring all positions into a single column while aligning them to the related footballer **ID**.
+
+![](positions_split_alt_3.png)
+
+![](positions_split_alt_4.png)
+
+Delete the middle column whose attributes are _Position1, Position2_ and _Position3_ and rename the table from **data** to **position_rel** (this is just my preference to show this is a relational table.)
+
+![](positions_split_alt_5.png)
+
+![](positions_split_alt_6.png)
+
+Then rename **Value** column to **Positions** and hit **Close and Load**.
+
+#### Creating the new optimised Data Table
+Open **data** again in _Power Query_, then remove the **Position1, Position2** and **Position3** columns.
+
+![](positions_split_alt_7.png)
+
+Rename table from **data** to **data_rel**, then **Close and Load**.
+
+![](positions_split_alt_9.png)
+
+Add the new table **data_rel** (a cell in the table must be selected) to the data model (as shown in image above) using **Power Pivot**.
+Close and repeat the same process for the **positions_rel** table.
+
+### Building Relationships
+
+![](positions_split_alt_11.png)
+
+The Diagram (Table) view of the model should be something like this
+
+![](positions_split_alt_11.1.png)
+
+Click and drag the **ID** column of the **data_rel** table and drop it on the **ID** column of **positions_rel** to create a relationship between both tables.
+
+![](positions_split_alt_11.2.png)
+
+This completes the process of unpivoting and linking the tables.
 
 ## Data Cleaning Results
 
