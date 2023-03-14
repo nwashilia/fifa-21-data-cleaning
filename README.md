@@ -162,6 +162,30 @@ Click and drag the **ID** column of the **data_rel** table and drop it on the **
 
 This completes the process of unpivoting and linking the tables.
 
+### Missed a few HITS
+
+For this, I figured to use Excel's **Power Query** for this task.
+
+Opening up the **data_rel** query, I trimmed the **Hits** column "just in case" there was a nagging space that could give me issues later on as I plan on converting it to a Numerical column.
+
+![](pq_hits_trim.png)
+
+Then I added a **custom column** from the "Add Column" segment, using a formula that checks to find cells in the **Hits** that end with a "K",  which signifies thousandsa, and multiplying itss number content by 1000; and if it didn't have a "K" at the end, it just copied the normal values of the **Hits** column to the new one. All these steps were carried out if the correspongning **Hits** cell isn't _null_; and if it was, I reassigned its values to **0** (we just wanted numbers in this column).
+
+![](pq_hits_trim_1.png)
+
+Then I converted the columns type to **Whole number** and renamed it to **hits_new**.
+
+![](pq_hits_trim_2.png)
+
+Then I removed the **Hits** column and renamed the **hits_new** column to **Hits**, thereby replacing the former one.
+
+![](pq_hits_trim_4.png)
+
+**Closing and Loading** this query would give the updated **data_rel** table as shown below.
+
+![](pq_hits_trim_5.png)
+
 ## Data Cleaning Results
 
 The data cleaning process resulted in a cleaned dataset that was ready for analysis. The final dataset had the following characteristics:
