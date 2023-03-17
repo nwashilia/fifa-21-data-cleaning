@@ -204,6 +204,14 @@ Also, I left the **photoURL** and **playerURL** just in the situation where they
 
 The data cleaning process was successful in ensuring that the FIFA '21 dataset was accurate, complete, and consistent. By documenting the process, future researchers will be able to replicate the cleaning process and work with the cleaned dataset, even though data cleaning is never a "one size fits all" thing.
 
+## Addendum
+
+Finally I got my hands on the data dictionary for the dataset and had to change the OVA and POT to percentages. I created a new column for each and divided by 100 to create the necessary decimals, then I replaced the old tables with the new ones.
+
+Also, **please please please** TRIM the **club** column. It will save you headaches.
+
+
+
 You can reach me on [Twitter](https://twitter.com/emmanwashili) or [LinkedIn](https://www.linkedin.com/in/emmanuel-nwashili-7051097b)
 
 #datacleaning #msexcel #excel #powerquery
